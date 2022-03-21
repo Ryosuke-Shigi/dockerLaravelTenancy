@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\testController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/* Route::group(['prefix'=>'test','as'=>'test.'],function(){
+    //インプット画面表示
+    Route::get('/view01',[testController::class,'view01'])->name('view01');
+    //ZIPアップロード処理
+    Route::POST('/zipUp',[testController::class,'zipUp'])->name('zipUp');
+});
+ */

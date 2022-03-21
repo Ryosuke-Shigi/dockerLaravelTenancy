@@ -17,8 +17,8 @@ ENV TZ=Asia/Tokyo \
   DB_HOST=db \
   DB_PORT=3306 \
   DB_DATABASE=database \
-  DB_USERNAME=admin \
-  DB_PASSWORD=pass \
+  DB_USERNAME=root \
+  DB_PASSWORD=administrator \
   LOG_CHANNEL=stderr
 
 COPY --from=composer:2.0 /usr/bin/composer /usr/bin/composer

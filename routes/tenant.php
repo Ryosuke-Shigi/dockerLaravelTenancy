@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
-
+use App\Http\Controllers\testController;
 /*
 |--------------------------------------------------------------------------
 | Tenant Routes
@@ -24,6 +24,19 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
-        return 'This is your multi-tenant application. The id of the current tenant is ' . tenant('id');
+        //テナント内容
+        //'tenant_model' => \App\Tenant::class, tenant_modelの値をここから見れるという寸法か
+        //App\models\Tenant id:data:update_at:tenanc_db_name
+        return 'これはマルチテナントアプリケーションです。現在のテナントのIDは ' . tenant('tenancy_db_name').' です。';
     });
+
+    Route::group(['prefix'=>'test','as'=>'test.'],function(){
+        //インプット画面表示
+        Route::get('/view01',[testController::class,'view01'])->name('view01');
+        //ZIPアップロード処理
+        Route::POST('/zipUp',[testController::class,'zipUp'])->name('zipUp');
+    });
+
+
+
 });
